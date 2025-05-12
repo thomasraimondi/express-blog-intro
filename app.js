@@ -42,12 +42,12 @@ app.use(express.static("public"));
 app.get("/", (req, res) => {
   console.log("richiesta ricevuta");
   const responseData = "Server del mio blog";
-  res.send(responseData);
+  res.status(200).send(responseData);
   console.log(`Risposta inviata: ${responseData}`);
 });
 
 app.get("/bacheca", (req, res) => {
-  res.status(200).json(posts);
+  posts.length > 0 ? res.status(200).json(posts) : res.status(204).json(posts);
 });
 
 app.listen(APP_PORT, () => {
