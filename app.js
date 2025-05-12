@@ -47,7 +47,9 @@ app.get("/", (req, res) => {
 });
 
 app.get("/bacheca", (req, res) => {
-  posts.length > 0 ? res.status(200).json(posts) : res.status(204).json(posts);
+  posts.length > 0
+    ? res.status(200).json({ posts: posts })
+    : res.status(204).json(posts);
 });
 
 app.listen(APP_PORT, () => {
