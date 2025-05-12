@@ -34,6 +34,8 @@ const posts = [
   },
 ];
 
+app.use(express.static("public"));
+
 app.get("/", (req, res) => {
   console.log("richiesta ricevuta");
   const responseData = "Server del mio blog";
@@ -46,5 +48,5 @@ app.get("/bacheca", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log("Serve in ascolto");
+  console.log(`Server in ascolto: http://localhost:${port}`);
 });
