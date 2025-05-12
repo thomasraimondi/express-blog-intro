@@ -1,6 +1,9 @@
+require("dotenv").config();
+const { APP_HOST, APP_PORT } = process.env;
+const appUrl = APP_PORT ? `${APP_HOST}:${APP_PORT}` : `${APP_HOST}`;
+
 const express = require("express");
 const app = express();
-const port = 3000;
 const posts = [
   {
     title: "post 1",
@@ -47,6 +50,6 @@ app.get("/bacheca", (req, res) => {
   res.status(200).json(posts);
 });
 
-app.listen(port, () => {
-  console.log(`Server in ascolto: http://localhost:${port}`);
+app.listen(APP_PORT, () => {
+  console.log(`Server in ascolto: ${appUrl}`);
 });
